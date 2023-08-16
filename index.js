@@ -6,6 +6,8 @@ console.log("3 - Comparação entre o percentual de aumento salarial e o IPCA\n"
 
 let escolha = entradaDados.question("Digite o numero da sua escolha: ");
 
+console.log("\nOpção Escolhida:" + escolha);
+
 let colecao_salarios = [
     { salario: 510.00, ano: 2010 },
     { salario: 545.00, ano: 2011 },
@@ -45,21 +47,21 @@ switch (Number(escolha)) {
         comparacao(colecao_inflacao,colecao_salarios);
         break;
     default:
-        console.log("Opção Inválida");
+        console.log("\nOpção Inválida");
         break;
 };
 
 function salario_minimo(colecao_salarios) {
     for (let salario of colecao_salarios) {
         console.log("\nAno: ".padEnd(40,".") + " " + salario.ano);          
-        console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + salario.salario.toFixed(2) );
+        console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + salario.salario.toFixed(2).replace(".",",") );
     }
 }
 
 function inflacao_que_teve(colecao_inflacao) {
     for (let inflacao of colecao_inflacao) {
         console.log("\nAno: ".padEnd(40,".") + " " + inflacao.ano);   
-        console.log("Inflação IPCA: ".padEnd(39,".") + " " + inflacao.inflacao + "%");
+        console.log(`${"Inflação IPCA: ".padEnd(39, ".")} ${inflacao.inflacao.toFixed(2).replace(".", ",")}%`);
     }
 }
 
@@ -70,7 +72,7 @@ function comparacao(colecao_inflacao,colecao_salarios){
     while(contador < colecao_inflacao.length){
         if(contador == 0){
             console.log("\nAno: ".padEnd(40,".")+ " " + colecao_salarios[contador].ano);          
-            console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + colecao_salarios[contador].salario.toFixed(2) );
+            console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + colecao_salarios[contador].salario.toFixed(2).replace(".",",") );
             console.log("Crescimento Salarial: ".padEnd(39,".") + " -");
             console.log("Inflação IPCA: ".padEnd(39,".") + " " + colecao_inflacao[contador].inflacao + "%");
         }else{
@@ -80,9 +82,9 @@ function comparacao(colecao_inflacao,colecao_salarios){
             
 
             console.log("\nAno: ".padEnd(40,".")+ " " + colecao_salarios[contador].ano);          
-            console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + colecao_salarios[contador].salario );
-            console.log("Crescimento Salarial: ".padEnd(39,".") + " " + crescimentoSalarial.toFixed(2) + "%");
-            console.log("Inflação IPCA: ".padEnd(39,".") + " " + colecao_inflacao[contador].inflacao + "%");
+            console.log("Salário Mínmo: ".padEnd(39,".") + " R$ " + colecao_salarios[contador].salario.toFixed(2).replace(".",",") );
+            console.log("Crescimento Salarial: ".padEnd(39,".") + " " + crescimentoSalarial.toFixed(2).replace(".",",") + "%");
+            console.log("Inflação IPCA: ".padEnd(39,".") + " " + colecao_inflacao[contador].inflacao.toFixed(2).replace(".",",") + "%");
         } 
 
         contador++;
